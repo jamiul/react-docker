@@ -9,3 +9,4 @@ services:
       - ./frontend/src:/app/src
     stdin_open: true
     tty: true
+    command: bash -c "npm start"
