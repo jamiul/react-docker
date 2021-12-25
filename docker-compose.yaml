@@ -6,7 +6,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./frontend/src:/app/src
+      - ./frontend:/app
     stdin_open: true
     tty: true
     command: bash -c "npm start"
