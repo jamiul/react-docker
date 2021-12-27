@@ -7,7 +7,7 @@ class Counters extends React.Component {
             { id: 1, value: 5 },
             { id: 2, value: 0 },
             { id: 3, value: 0 },
-            { id: 4, value: 0 }
+            { id: 4, value: 0 },
         ]
     };
     handleIncrement = counter => {
@@ -40,14 +40,12 @@ class Counters extends React.Component {
                     Reset
                 </button>
                 {this.state.counters.map(counter => (
-                    console.log(counter),
                     <Counter
                         key={counter.id}
                         onDelete={this.handleDelete}
                         onIncrement={this.handleIncrement}
                         counter={counter}
                         >
-                    <h4>Title</h4>
                     </Counter>
                 ))}
             </div>

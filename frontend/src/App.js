@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/navbar';
+import Counters from './components/counters';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Let's start
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <NavBar />
+        <main className="container">
+          <Counters />
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
