@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class NavBar extends React.Component {
     state = {}
@@ -6,7 +6,10 @@ class NavBar extends React.Component {
         return (
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Navbar</a>
+                    <a href="#" className="navbar-brand">
+                        Navbar
+                        <span class="badge bg-dark m-2">{this.props.totalCounters}</span>
+                    </a>
                 </div>
             </nav>
         );
