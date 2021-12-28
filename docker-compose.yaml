@@ -4,7 +4,7 @@ services:
     build: ./frontend
     container_name: my-app
     ports:
-      - '3000:3000'
+      - '3080:3000'
     volumes:
       - ./frontend:/app
     stdin_open: true
