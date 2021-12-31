@@ -1,10 +1,12 @@
 import React from 'react';
 import { getMovies } from '../services/fakeMovieService'
 import Like from './like';
+import Pagination from './common/pagination';
 
 class Movies extends React.Component {
     state = {
-        movies: getMovies()
+        movies: getMovies(),
+        pageSize: 4
     };
     // delete the movie
     handleDelete = movie => {
@@ -19,6 +21,10 @@ class Movies extends React.Component {
         movies[index] = { ...movies[index] };
         movies[index].liked = !movies[index].liked;
         this.setState({ movies });
+    }
+    // handle page change
+    handlePageChange = () => {
+        console.log(`page`);
     }
     render() {
         console.log(this.state.movies);
@@ -63,6 +69,11 @@ class Movies extends React.Component {
                         ))}
                     </tbody>
                 </table>
+                <Pagination
+                    itemsCount={count}
+                    pageSize={this.state.pageSize}
+                    onPageChange={this.handlePageChange}
+                />
             </React.Fragment>
         );
     }
