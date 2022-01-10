@@ -1,15 +1,24 @@
 import React from 'react';
-import { getMovies } from '../services/fakeMovieService'
 import Like from './like';
+import ListGroup from './common/listGroup';
 import Pagination from './common/pagination';
+import { getMovies } from '../services/fakeMovieService'
+import { getGenres } from '../services/fakeGenreService'
 import { paginate } from '../utlis/paginate';
 
 class Movies extends React.Component {
     state = {
-        movies: getMovies(),
+        movies: [],
+        genres: [],
         currentPage: 1,
         pageSize: 4
     };
+    componentDidMount() {
+        this.setState({
+            genres: getGenres(),
+            movies: getMovies()
+        })
+    }
     // delete the movie
     handleDelete = movie => {
         console.log(movie);
@@ -28,6 +37,10 @@ class Movies extends React.Component {
     handlePageChange = (page) => {
         this.setState({ currentPage: page });
     }
+    // handle genre select
+    handleGenreSelect = (genre) => {
+        console.log(genre);
+    }
     render() {
         const {length: count} = this.state.movies // destructuring
         const { currentPage, pageSize, movies: allMovies } = this.state;
@@ -36,7 +49,14 @@ class Movies extends React.Component {
         const movies = paginate(allMovies, currentPage, pageSize);
 
         return (
-            <React.Fragment>
+            <div className='row'>
+                <div className="col-3">
+                    <ListGroup
+                        items={this.state.genres}
+                        onItemSelect={this.handleGenreSelect}
+                    />
+                </div>
+                <div className="col">
                 <p>Showing {count} movies</p>
                 <table className="table">
                     <thead>
@@ -80,7 +100,8 @@ class Movies extends React.Component {
                     currentPage={currentPage}
                     onPageChange={this.handlePageChange}
                 />
-            </React.Fragment>
+                </div>
+            </div>
         );
     }
 }
